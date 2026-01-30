@@ -31,7 +31,7 @@ A Chrome/Edge extension that automatically downloads files from API responses wh
 ### 📥 Method 1: Install from GitHub Releases (Recommended)
 
 1. **Download the extension**
-   - Go to the [Releases page](https://github.com/YOUR_USERNAME/base64-auto-downloader/releases/latest)
+   - Go to the [Releases page](https://github.com/devanshjha-sq/base64-auto-downloader/releases/latest)
    - Download `base64-auto-downloader-v1.0.0.zip`
    - Extract the ZIP file to a folder on your computer
 
@@ -40,7 +40,7 @@ A Chrome/Edge extension that automatically downloads files from API responses wh
    - **Edge**: Navigate to `edge://extensions`
 
 3. **Enable Developer mode**
-   - Look for the **Developer mode** toggle (usually in the top-right corner)
+   - Look for the **Developer mode** toggle (usually in the left or light corner)
    - Turn it **ON**
 
 4. **Load the extension**
@@ -67,7 +67,7 @@ If you want to modify the code or contribute:
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/YOUR_USERNAME/base64-auto-downloader.git
+   git clone https://github.com/devanshjha-sq/base64-auto-downloader.git
    cd base64-auto-downloader
    ```
 
@@ -75,7 +75,7 @@ If you want to modify the code or contribute:
    - **Chrome**: `chrome://extensions`
    - **Edge**: `edge://extensions`
 
-3. **Enable Developer mode** (top-right toggle)
+3. **Enable Developer mode** (toggle at left or right corner)
 
 4. **Load unpacked**
    - Click **Load unpacked**
