@@ -8,7 +8,7 @@ A Chrome/Edge extension that automatically downloads files from API responses wh
 
 - **Always on** – Works on every tab; no need to click “Enable” each time.
 - **Automatic detection** – Intercepts `fetch` and XHR responses, detects base64 content, and triggers a download.
-- **Known file types only** – Downloads only when the content is recognized as a real file (Excel, PDF, images). Ignores generic binary and text that looks like base64 (e.g. API descriptions).
+- **Known file types only** – Downloads only when the content is recognized as a real file (Excel, PDF, images, CSV/text when the API provides the filename). Ignores generic binary and text that looks like base64 (e.g. API descriptions).
 - **Toast notifications** – Shows a small on-page toast when a download starts and when it completes, with the extension name and file name.
 - **Works with Swagger** – Designed to work with Swagger UI and other API tools that return base64 in JSON.
 
@@ -21,20 +21,66 @@ A Chrome/Edge extension that automatically downloads files from API responses wh
 | Excel  | `.xlsx`, `.xls` | By file signature |
 | PDF    | `.pdf`     | By file signature |
 | Images | `.jpg`, `.png`, `.gif` | By file signature |
+| CSV / text | `.csv`, `.txt` | By API filename (when response includes the file name) |
 | Other  | `.bin`     | Not downloaded (skipped to avoid false downloads) |
 
 ---
 
 ## Installation
 
-1. **Clone or download** this project to your machine.
-2. Open **Chrome** or **Edge** and go to:
-   - Chrome: **`chrome://extensions`**
-   - Edge: **`edge://extensions`**
-3. Turn on **Developer mode** (top-right).
-4. Click **Load unpacked** and select the project folder (the one containing `manifest.json`).
-5. Accept the requested permissions if prompted.
-6. The extension icon will appear in the toolbar.
+### 📥 Method 1: Install from GitHub Releases (Recommended)
+
+1. **Download the extension**
+   - Go to the [Releases page](https://github.com/YOUR_USERNAME/base64-auto-downloader/releases/latest)
+   - Download `base64-auto-downloader-v1.0.0.zip`
+   - Extract the ZIP file to a folder on your computer
+
+2. **Open your browser's extension page**
+   - **Chrome**: Navigate to `chrome://extensions`
+   - **Edge**: Navigate to `edge://extensions`
+
+3. **Enable Developer mode**
+   - Look for the **Developer mode** toggle (usually in the top-right corner)
+   - Turn it **ON**
+
+4. **Load the extension**
+   - Click **Load unpacked** button
+   - Browse to and select the **extracted folder** (the one containing `manifest.json`)
+   - Click **Select Folder**
+
+5. **Confirm installation**
+   - The extension icon (📥) should appear in your browser toolbar
+   - You may need to click the puzzle piece icon and pin it for easy access
+
+6. **Accept permissions**
+   - If prompted, review and accept the requested permissions
+   - The extension needs these to detect API responses and save files
+
+✅ **Done!** The extension is now active and will automatically download files from base64 API responses.
+
+---
+
+### 🔧 Method 2: Install from Source (For Developers)
+
+If you want to modify the code or contribute:
+
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/base64-auto-downloader.git
+   cd base64-auto-downloader
+   ```
+
+2. **Open your browser's extension page**
+   - **Chrome**: `chrome://extensions`
+   - **Edge**: `edge://extensions`
+
+3. **Enable Developer mode** (top-right toggle)
+
+4. **Load unpacked**
+   - Click **Load unpacked**
+   - Select the cloned `base64-auto-downloader` folder
+   - The extension will install immediately
 
 ---
 
@@ -99,20 +145,6 @@ Nested objects are searched for long base64-like strings, but common API/spec fi
 
 ---
 
-## Project structure
-
-```
-base64-auto-download/
-├── manifest.json     # Extension manifest (Chrome/Edge, Manifest V3)
-├── background.js     # Service worker: handles downloads, injects script on tab load
-├── content.js        # Content script: loads injected.js, shows toasts, relays to background
-├── injected.js       # Page script: overrides fetch/XHR, detects base64, triggers download
-├── popup.html        # Extension popup UI (“Always on” and instructions)
-└── README.md         # This file
-```
-
----
-
 ## Troubleshooting
 
 - **File doesn’t download**  
@@ -132,4 +164,4 @@ base64-auto-download/
 
 ## License
 
-MIT (or your preferred license).
+See [LICENSE](LICENSE.md) for details.

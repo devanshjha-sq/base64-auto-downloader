@@ -24,8 +24,12 @@
       var bytes = new Uint8Array(binaryString.length);
       for (var i = 0; i < binaryString.length; i++) bytes[i] = binaryString.charCodeAt(i);
       var fileInfo = detectFileType(bytes);
+      if (fileInfo.ext === 'bin' && filename) {
+        var extFromName = (filename.split('.').pop() || '').toLowerCase();
+        if (extFromName === 'csv') fileInfo = { ext: 'csv', mime: 'text/csv' };
+        else if (extFromName === 'txt') fileInfo = { ext: 'txt', mime: 'text/plain' };
+      }
       console.log('📋 Detected type: ' + fileInfo.ext);
-      // Only download known file types; skip .bin to avoid false downloads on page load/refresh
       if (fileInfo.ext === 'bin') return false;
       window.postMessage({ type: 'BASE64_AUTO_DOWNLOAD', payload: { base64: base64String, filename: filename || null, ext: fileInfo.ext, mimeType: fileInfo.mime } }, '*');
       console.log('✅ Download triggered');
