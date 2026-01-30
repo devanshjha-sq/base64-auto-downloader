@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Base64 Auto Downloader</title>
+  <style>
+    body {
+      width: 320px;
+      padding: 20px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      margin: 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+    
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+    
+    h1 {
+      font-size: 20px;
+      margin: 0 0 15px 0;
+      font-weight: 600;
+      text-align: center;
+    }
+    
+    .icon {
+      text-align: center;
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+    
+    .status {
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      font-weight: 600;
+      text-align: center;
+      font-size: 14px;
+    }
+    
+    .status.active {
+      background-color: rgba(76, 175, 80, 0.3);
+      border: 2px solid #4CAF50;
+    }
+    
+    .status.inactive {
+      background-color: rgba(244, 67, 54, 0.3);
+      border: 2px solid #F44336;
+    }
+    
+    .supported-formats {
+      margin-top: 15px;
+      padding: 15px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+    }
+    
+    .supported-formats h3 {
+      margin: 0 0 12px 0;
+      font-size: 14px;
+      font-weight: 600;
+      opacity: 0.9;
+    }
+    
+    .format-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    
+    .format-item {
+      padding: 8px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 6px;
+      font-size: 12px;
+      text-align: center;
+      font-weight: 500;
+    }
+    
+    button {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: all 0.3s ease;
+    }
+    
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    button:active {
+      transform: translateY(0);
+    }
+    
+    .instructions {
+      margin-top: 15px;
+      font-size: 11px;
+      opacity: 0.8;
+      line-height: 1.6;
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 6px;
+    }
+    
+    .instructions strong {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="icon">📥</div>
+    <h1>Base64 Auto Downloader</h1>
+    
+    <div id="status" class="status active">
+      ✅ Always on
+    </div>
+    
+    <div class="supported-formats">
+      <h3>✨ Supported Formats</h3>
+      <div class="format-grid">
+        <div class="format-item">📊 Excel</div>
+        <div class="format-item">📄 CSV</div>
+        <div class="format-item">📕 PDF</div>
+        <div class="format-item">🖼️ Images</div>
+      </div>
+    </div>
+    
+    <div class="instructions">
+      <strong>How to use:</strong>
+      1. Open Swagger (or any page)<br>
+      2. Execute your API<br>
+      3. Base64 files download automatically<br>
+      4. Check your Downloads folder
+    </div>
+  </div>
+</body>
+</html>
