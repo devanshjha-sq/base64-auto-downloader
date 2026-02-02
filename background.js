@@ -160,20 +160,20 @@ function enableAutoDownload() {
       }
       searchNested(json);
       
-    } catch (e) {
-      console.log('⚠️ Not JSON, trying regex...');
-    }
-
-    // Only use regex when we didn't already get a file from JSON (so file_name is used, not timestamp)
-    if (downloadCount === 0) {
-      const regex = /[A-Za-z0-9+\/]{200,}={0,2}/g;
-      const matches = text.match(regex);
-      if (matches && matches.length > 0) {
-        console.log(`📦 Found ${matches.length} base64 string(s) via regex`);
-        for (const match of matches) {
-          if (downloadFile(match, null)) downloadCount++;
+      // Only use regex when we have JSON but didn't find a file (so file_name is used, not timestamp)
+      // Never run regex on non-JSON (e.g. HTML) - that would match inline base64 images on random pages
+      if (downloadCount === 0) {
+        const regex = /[A-Za-z0-9+\/]{200,}={0,2}/g;
+        const matches = text.match(regex);
+        if (matches && matches.length > 0) {
+          console.log(`📦 Found ${matches.length} base64 string(s) via regex`);
+          for (const match of matches) {
+            if (downloadFile(match, null)) downloadCount++;
+          }
         }
       }
+    } catch (e) {
+      console.log('⚠️ Not JSON, skipping (avoids false downloads on HTML pages with inline images)');
     }
     
     if (downloadCount > 0) {
